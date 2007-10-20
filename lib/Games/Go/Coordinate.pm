@@ -4,7 +4,7 @@ use warnings;
 use strict;
 
 
-our $VERSION = '0.01';
+our $VERSION = '0.02';
 
 
 use base qw(Class::Accessor::Complex);
@@ -15,7 +15,7 @@ use overload
     'cmp' => 'str_cmp';
 
 
-Games::Go::Coordinate
+__PACKAGE__
     ->mk_new
     ->mk_accessors(qw(x y));
 
