@@ -1,8 +1,30 @@
-Revision history for Perl extension Games::Go::Coordinate.
-
-0.02  Sa Okt 20 22:31:11 CEST 2007
-        - simplified accessor declaration
-
-0.01  Sa Okt 20 12:31:10 CEST 2007
-        - original version
-
+---
+global:
+  name: Games-Go-Coordinate
+releases:
+  - author: 'Marcel Gruenauer <marcel@cpan.org>'
+    changes:
+      - Converted Changes file to YAML style
+      - '.shipit: added Twitter step'
+      - 'Makefile.PL: added auto_install() and process_templates()'
+      - 'lib/*: converted to template'
+      - updated MANIFEST
+      - added t/perlcriticrc
+      - updated MANIFEST
+      - 'Makefile.PL: now requires Class::Accessor::Complex 0.12'
+    date: 2007-11-24T21:54:54Z
+    tags:
+      - NEWFEATURE
+    version: 0.03
+  - author: 'Marcel Gruenauer <marcel@cpan.org>'
+    changes:
+      - simplified accessor declaration
+    date: 2007-10-20T22:31:11+02:00
+    tags: []
+    version: 0.02
+  - author: 'Marcel Gruenauer <marcel@cpan.org>'
+    changes:
+      - original version
+    date: 2007-10-20T12:31:10+02:00
+    tags: []
+    version: 0.01

@@ -4,7 +4,7 @@ use warnings;
 use strict;
 
 
-our $VERSION = '0.02';
+our $VERSION = '0.03';
 
 
 use base qw(Class::Accessor::Complex);
@@ -75,6 +75,8 @@ sub translate {
 
 __END__
 
+
+
 =head1 NAME
 
 Games::Go::Coordinate - represents a board coordinate in the game of Go
@@ -94,41 +96,46 @@ can be compared (as strings) to see whether two ranks are equal or whether one
 rank is higher than the other. Coordinate objects stringify to the SGF
 notation (for example, C<(4,10)> stringifies to C<dj>.
 
-=head1 METHODS
+Games::Go::Coordinate inherits from L<Class::Accessor::Complex>.
 
-Additionally, this class defines the following methods:
+The superclass L<Class::Accessor::Complex> defines these methods and
+functions:
+
+    carp(), cluck(), croak(), flatten(), mk_abstract_accessors(),
+    mk_array_accessors(), mk_boolean_accessors(),
+    mk_class_array_accessors(), mk_class_hash_accessors(),
+    mk_class_scalar_accessors(), mk_concat_accessors(),
+    mk_forward_accessors(), mk_hash_accessors(), mk_integer_accessors(),
+    mk_new(), mk_object_accessors(), mk_scalar_accessors(),
+    mk_set_accessors(), mk_singleton()
+
+The superclass L<Class::Accessor> defines these methods and functions:
+
+    _carp(), _croak(), _mk_accessors(), accessor_name_for(),
+    best_practice_accessor_name_for(), best_practice_mutator_name_for(),
+    follow_best_practice(), get(), make_accessor(), make_ro_accessor(),
+    make_wo_accessor(), mk_accessors(), mk_ro_accessors(),
+    mk_wo_accessors(), mutator_name_for(), set()
+
+The superclass L<Class::Accessor::Installer> defines these methods and
+functions:
+
+    install_accessor(), subname()
+
+=head1 METHODS
 
 =over 4
 
 =item new
 
-    my $coord = Games::Go::Coordinate->new(x => 7, y => 12);
+    my $obj = Games::Go::Coordinate->new;
+    my $obj = Games::Go::Coordinate->new(%args);
 
-Constructs a new objects. The constructor accepts named arguments - that is, a
-hash - and will set the hash values on the accessor methods denoted by the
-keys.
-
-=item x
-
-    $coord->x(19);
-
-Sets or gets the horizontal part of the coordinate. No bounds checking is done
-as it is conceivable to have boards with more than 19 lines, and for it might
-be useful to have virtual negative coordinates.
-
-=item clear_x
-
-Clears the horizontal part of the coordinate.
-
-=item y
-
-    $coord->y(13);
-
-Sets or gets the vertical part of the coordinate.
-
-=item clear_y
-
-Clears the vertical part of the coordinate.
+Creates and returns a new object. The constructor will accept as arguments a
+list of pairs, from component name to initial value. For each pair, the named
+component is initialized by calling the method of the same name with the given
+value. If called with a single hash reference, it is dereferenced and its
+key/value pairs are set as described before.
 
 =item set_sgf_coordinate
 
@@ -167,12 +174,16 @@ and translates the coordinate by those deltas.
 If you talk about this module in blogs, on del.icio.us or anywhere else,
 please use the C<gamesgocoordinate> tag.
 
+=head1 VERSION 
+                   
+This document describes version 0.03 of L<Games::Go::Coordinate>.
+
 =head1 BUGS AND LIMITATIONS
 
 No bugs have been reported.
 
 Please report any bugs or feature requests to
-C<bug-games-go-coordinate@rt.cpan.org>, or through the web interface at
+C<<bug-games-go-coordinate@rt.cpan.org>>, or through the web interface at
 L<http://rt.cpan.org>.
 
 =head1 INSTALLATION
@@ -195,6 +206,7 @@ Copyright 2007 by Marcel GrE<uuml>nauer
 
 This library is free software; you can redistribute it and/or modify
 it under the same terms as Perl itself.
+
 
 =cut
 
