@@ -2,23 +2,15 @@ package Games::Go::Coordinate;
 
 use warnings;
 use strict;
+use Moose;
 
-
-our $VERSION = '0.03';
-
-
-use base qw(Class::Accessor::Complex);
-
+our $VERSION = '0.04';
 
 use overload
     '""'  => 'stringify',
     'cmp' => 'str_cmp';
 
-
-__PACKAGE__
-    ->mk_new
-    ->mk_accessors(qw(x y));
-
+has [ qw/x y/ ] => (is => 'rw', isa => 'Int');
 
 # accept something like 'ac' and set x=1, y=3
 sub set_sgf_coordinate {
@@ -96,46 +88,11 @@ can be compared (as strings) to see whether two ranks are equal or whether one
 rank is higher than the other. Coordinate objects stringify to the SGF
 notation (for example, C<(4,10)> stringifies to C<dj>.
 
-Games::Go::Coordinate inherits from L<Class::Accessor::Complex>.
-
-The superclass L<Class::Accessor::Complex> defines these methods and
-functions:
-
-    carp(), cluck(), croak(), flatten(), mk_abstract_accessors(),
-    mk_array_accessors(), mk_boolean_accessors(),
-    mk_class_array_accessors(), mk_class_hash_accessors(),
-    mk_class_scalar_accessors(), mk_concat_accessors(),
-    mk_forward_accessors(), mk_hash_accessors(), mk_integer_accessors(),
-    mk_new(), mk_object_accessors(), mk_scalar_accessors(),
-    mk_set_accessors(), mk_singleton()
-
-The superclass L<Class::Accessor> defines these methods and functions:
-
-    _carp(), _croak(), _mk_accessors(), accessor_name_for(),
-    best_practice_accessor_name_for(), best_practice_mutator_name_for(),
-    follow_best_practice(), get(), make_accessor(), make_ro_accessor(),
-    make_wo_accessor(), mk_accessors(), mk_ro_accessors(),
-    mk_wo_accessors(), mutator_name_for(), set()
-
-The superclass L<Class::Accessor::Installer> defines these methods and
-functions:
-
-    install_accessor(), subname()
-
 =head1 METHODS
 
 =over 4
 
-=item new
 
-    my $obj = Games::Go::Coordinate->new;
-    my $obj = Games::Go::Coordinate->new(%args);
-
-Creates and returns a new object. The constructor will accept as arguments a
-list of pairs, from component name to initial value. For each pair, the named
-component is initialized by calling the method of the same name with the given
-value. If called with a single hash reference, it is dereferenced and its
-key/value pairs are set as described before.
 
 =item set_sgf_coordinate
 
@@ -169,6 +126,12 @@ and translates the coordinate by those deltas.
 
 =back
 
+Games::Go::Coordinate inherits from L<Moose::Object>.
+
+The superclass L<Moose::Object> defines these methods and functions:
+
+    new(), BUILDALL(), DEMOLISHALL(), DESTROY(), does(), dump()
+
 =head1 TAGS
 
 If you talk about this module in blogs, on del.icio.us or anywhere else,
@@ -176,7 +139,7 @@ please use the C<gamesgocoordinate> tag.
 
 =head1 VERSION 
                    
-This document describes version 0.03 of L<Games::Go::Coordinate>.
+This document describes version 0.04 of L<Games::Go::Coordinate>.
 
 =head1 BUGS AND LIMITATIONS
 
@@ -196,13 +159,13 @@ The latest version of this module is available from the Comprehensive Perl
 Archive Network (CPAN). Visit <http://www.perl.com/CPAN/> to find a CPAN
 site near you. Or see <http://www.perl.com/CPAN/authors/id/M/MA/MARCEL/>.
 
-=head1 AUTHOR
+=head1 AUTHORS
 
 Marcel GrE<uuml>nauer, C<< <marcel@cpan.org> >>
 
 =head1 COPYRIGHT AND LICENSE
 
-Copyright 2007 by Marcel GrE<uuml>nauer
+Copyright 2007-2008 by the authors.
 
 This library is free software; you can redistribute it and/or modify
 it under the same terms as Perl itself.

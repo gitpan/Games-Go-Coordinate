@@ -5,7 +5,7 @@ name 'Games-Go-Coordinate';
 all_from 'lib/Games/Go/Coordinate.pm';
 perl_version '5.006';
 
-requires 'Class::Accessor::Complex' => '0.12';
+requires 'Moose' => '0.44';
 
 build_requires 'Test::More' => '0.70';
 

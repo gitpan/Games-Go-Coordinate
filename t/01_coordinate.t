@@ -15,7 +15,7 @@ $coord->translate(2, 2);
 is($coord->x, 6, 'translated x coordinate');
 is($coord->y, 12, 'translated y coordinate');
 
-$coord->new_from_sgf_coordinate('bc');
+$coord = $coord->new_from_sgf_coordinate('bc');
 is($coord->x, 2, 'x coordinate from "bc"');
 is($coord->y, 3, 'x coordinate from "bc"');
 
